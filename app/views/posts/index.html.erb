@@ -2,7 +2,9 @@
 
 <h1>Posts</h1>
 
-<div id="posts">
+<%= line_chart Post.group_by_day(:created_at, range: 1.month.ago.midnight..Time.now).sum(:views) %>
+
+<div id="posts" class="my-5">
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
